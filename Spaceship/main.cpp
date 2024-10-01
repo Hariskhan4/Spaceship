@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "game.h"
+
 int main()
 {
 	int windowWidth = 750;
@@ -8,10 +9,11 @@ int main()
 	InitWindow(windowWidth, windowHeight, "Spaceship");
 	SetTargetFPS(60);
 	Game game;
+	
 	while (WindowShouldClose() == false)
 	{
 		game.PlayerInput();
-		
+		game.Update();
 		BeginDrawing();
 		ClearBackground(maroon);
 		game.DrawGame();
