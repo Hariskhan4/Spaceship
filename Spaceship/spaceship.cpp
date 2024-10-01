@@ -2,7 +2,7 @@
 
 Spaceship::Spaceship()
 {
-	image = LoadTexture("Graphics/Nautolan Ship - Dreadnought - Base.png");
+	image = LoadTexture("Graphics/Kla'ed - Battlecruiser - Base.png");
 	position.x = (GetScreenWidth()-image.width)/2;
 	position.y = GetScreenHeight()-image.height;
 	LastFireTime = 0.0;

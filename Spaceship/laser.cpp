@@ -2,7 +2,7 @@
 
 Laser::Laser(Vector2 position, int speed)
 {
-	laserimage = LoadTexture("Graphics/Nautolan - Ray.png");
+	laserimage = LoadTexture("Graphics/Kla'ed - Ray.png");
 	this->position = position;
 	this->speed = speed;
 	laseractive = true;
