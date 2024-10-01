@@ -25,6 +25,7 @@ void Game::Update()
 	{
 		laser.Update();
 	}
+	DeleteInActiveLasers();
 }
 
 void Game::PlayerInput()
@@ -35,4 +36,19 @@ void Game::PlayerInput()
 	else if (IsKeyDown(KEY_LEFT)) spaceship.moveLeft();
 	else if (IsKeyDown(KEY_SPACE)) spaceship.firelaser();
 
+}
+
+void Game::DeleteInActiveLasers()
+{
+	for (auto it = spaceship.lasers.begin(); it != spaceship.lasers.end();)
+	{
+		if (!it->laseractive)
+		{
+			it=spaceship.lasers.erase(it);
+		}
+		else {
+			++it;
+		}
+		
+	}
 }

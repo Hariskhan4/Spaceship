@@ -20,5 +20,5 @@ public:
 
 private:
 	Texture2D image;
-	int LastFireTime;
+	double LastFireTime;
 };

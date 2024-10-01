@@ -5,7 +5,7 @@ Spaceship::Spaceship()
 	image = LoadTexture("Graphics/Nautolan Ship - Dreadnought - Base.png");
 	position.x = (GetScreenWidth()-image.width)/2;
 	position.y = GetScreenHeight()-image.height;
-	LastFireTime = 0;
+	LastFireTime = 0.0;
 }
 
 Spaceship::~Spaceship()
@@ -52,7 +52,9 @@ void Spaceship::moveDown()
 
 void Spaceship::firelaser()
 {
-	if((GetTime()-LastFireTime) >= 0.7)
-	lasers.push_back(Laser({ (position.x + image.width / 2)-35,position.y }, 7));
-	LastFireTime = GetTime();
+	if (GetTime() - LastFireTime >= 0.35) {
+		lasers.push_back(Laser({ (position.x + image.width / 2) - 35,position.y }, 7));
+		LastFireTime = GetTime();
+	}
+	
 }
