@@ -25,3 +25,8 @@ void Asteroids::Update()
 	}
 }
 
+Rectangle Asteroids::getrect()
+{
+	return {float(positionX),float(positionY),float(asteroidimage.width),float(asteroidimage.height)};
+}
+

@@ -19,5 +19,6 @@ private:
 	void GenerateAsteroid();
 	int RandomX();
 	double LastAsteroidTime = 0;
+	void Explode();
 	
 };

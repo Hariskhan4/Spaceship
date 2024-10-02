@@ -23,3 +23,8 @@ void Laser::Update()
 		
 	}
 }
+
+Rectangle Laser::getrect()
+{
+	return {position.x,position.y,float(laserimage.width),float(laserimage.height)};
+}

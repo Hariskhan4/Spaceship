@@ -10,11 +10,12 @@ public:
 	void Update();
 	bool IsHit;
 	bool IsActive;
-
-
-private:
 	int positionX;
 	int positionY;
+	Rectangle getrect();
+
+private:
+	
 	int speed;
 	Texture2D asteroidimage;
 };

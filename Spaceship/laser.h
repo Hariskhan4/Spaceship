@@ -9,8 +9,10 @@ public:
 	void Update();
 	bool laseractive;
 	Texture2D laserimage;
-private:
 	Vector2 position;
+	Rectangle getrect();
+private:
+	
 	int speed;
 
 };

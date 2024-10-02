@@ -38,6 +38,7 @@ void Game::Update()
 		asteroid.Update();
 	}
 	DeleteInActiveAsteroids();
+	Explode();
 }
 
 void Game::PlayerInput()
@@ -98,4 +99,23 @@ int Game::RandomX()
 	std::uniform_int_distribution<> distrib(50, 700);
 	int X = distrib(gen);
 	return X;
+}
+
+void Game::Explode()
+{
+	for (auto& laser : spaceship.lasers)
+	{
+		auto it = asteroids.begin();
+		while (it != asteroids.end())
+		{
+			if (CheckCollisionRecs(it->getrect(), laser.getrect()))
+			{
+				it = asteroids.erase(it);
+				laser.laseractive = false;
+			}
+			else {
+				++it;
+			}
+		}
+	}
 }
