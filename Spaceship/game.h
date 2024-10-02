@@ -1,5 +1,6 @@
 #pragma once
 #include "spaceship.h"
+#include "asteroids.h"
 
 class Game
 {
@@ -9,7 +10,12 @@ public:
 	void DrawGame();
 	void Update();
 	void PlayerInput();
+	std::vector<Asteroids> asteroids;
 private:
 	Spaceship spaceship;
 	void DeleteInActiveLasers();
+	void DeleteInActiveAsteroids();
+	void GenerateAsteroid();
+	double LastAsteroidTime = 0;;
+	
 };

@@ -1,4 +1,5 @@
 #include "game.h"
+#include <raylib.h>
 
 Game::Game()
 {
@@ -17,6 +18,11 @@ void Game::DrawGame()
 	{
 		laser.DrawLaser();
 	}
+	GenerateAsteroid();
+	for (auto& asteroid : asteroids)
+	{
+		asteroid.DrawAsteroid();
+	}
 }
 
 void Game::Update()
@@ -26,6 +32,11 @@ void Game::Update()
 		laser.Update();
 	}
 	DeleteInActiveLasers();
+	for (auto& asteroid : asteroids)
+	{
+		asteroid.Update();
+	}
+	DeleteInActiveAsteroids();
 }
 
 void Game::PlayerInput()
@@ -51,4 +62,29 @@ void Game::DeleteInActiveLasers()
 		}
 		
 	}
+}
+
+void Game::DeleteInActiveAsteroids()
+{
+	for (auto it = asteroids.begin(); it != asteroids.end();)
+	{
+		if (!it->IsActive)
+		{
+			it = asteroids.erase(it);
+		}
+		else {
+			++it;
+		}
+
+	}
+}
+
+void Game::GenerateAsteroid()
+{
+	if (GetTime() - LastAsteroidTime >= 0.35)
+	{
+		asteroids.push_back(Asteroids({ 100,100 }, 7));
+		LastAsteroidTime = GetTime();
+	}
+	
 }
