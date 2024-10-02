@@ -1,6 +1,7 @@
 #pragma once
 #include "spaceship.h"
 #include "asteroids.h"
+#include <random>
 
 class Game
 {
@@ -16,6 +17,7 @@ private:
 	void DeleteInActiveLasers();
 	void DeleteInActiveAsteroids();
 	void GenerateAsteroid();
-	double LastAsteroidTime = 0;;
+	int RandomX();
+	double LastAsteroidTime = 0;
 	
 };

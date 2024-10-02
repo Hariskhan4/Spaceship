@@ -24,28 +24,28 @@ void Spaceship::Update()
 
 void Spaceship::moveLeft()
 {
-	position.x -= 7;
+	position.x -= 12;
 	if (position.x < 0)
 		position.x = 0;
 }
 
 void Spaceship::moveRight()
 {
-	position.x += 7;
+	position.x += 12;
 	if (position.x > GetScreenWidth()-image.width)
 		position.x = GetScreenWidth() - image.width;
 }
 
 void Spaceship::moveUp()
 {
-	position.y -= 7;
+	position.y -= 12;
 	if (position.y < 0)
 		position.y = 0;
 }
 
 void Spaceship::moveDown()
 {
-	position.y += 7;
+	position.y += 12;
 	if (position.y > GetScreenHeight() - image.height)
 		position.y = GetScreenHeight() - image.height;
 }

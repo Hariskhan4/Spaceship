@@ -5,7 +5,7 @@
 class Asteroids
 {
 public:
-	Asteroids(Vector2 position,int speed);
+	Asteroids(int positionX,int positionY,int speed);
 	void DrawAsteroid();
 	void Update();
 	bool IsHit;
@@ -13,7 +13,8 @@ public:
 
 
 private:
-	Vector2 position;
+	int positionX;
+	int positionY;
 	int speed;
 	Texture2D asteroidimage;
 };

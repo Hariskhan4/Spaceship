@@ -1,9 +1,11 @@
 #include "asteroids.h"
+#include <random>
 
-Asteroids::Asteroids(Vector2 position, int speed)
+Asteroids::Asteroids(int positionX,int positionY, int speed)
 {
 	asteroidimage = LoadTexture("Graphics/a30000.png");
-	this->position = position;
+	this->positionX = positionX;
+	this->positionY = positionY;
 	this->speed = speed;
 	IsActive = true;
 	IsHit = false;
@@ -11,14 +13,15 @@ Asteroids::Asteroids(Vector2 position, int speed)
 
 void Asteroids::DrawAsteroid()
 {
-	DrawTextureV(asteroidimage,position, WHITE);
+	DrawTexture(asteroidimage,positionX,positionY, WHITE);
 }
 
 void Asteroids::Update()
 {
-	position.y += 7;
-	if (position.y > GetScreenHeight() - asteroidimage.height)
+	positionY += speed;
+	if (positionY > GetScreenHeight() - asteroidimage.height)
 	{
 		IsActive = false;
 	}
 }
+

@@ -1,5 +1,6 @@
 #include "game.h"
 #include <raylib.h>
+#include<random>
 
 Game::Game()
 {
@@ -81,10 +82,20 @@ void Game::DeleteInActiveAsteroids()
 
 void Game::GenerateAsteroid()
 {
-	if (GetTime() - LastAsteroidTime >= 0.35)
+	if (GetTime() - LastAsteroidTime >= 2)
 	{
-		asteroids.push_back(Asteroids({ 100,100 }, 7));
+		asteroids.push_back(Asteroids( RandomX(),0, 4));
 		LastAsteroidTime = GetTime();
 	}
 	
+}
+
+int Game::RandomX()
+{
+
+	std::random_device rd;  // a seed source for the random number engine
+	std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+	std::uniform_int_distribution<> distrib(50, 700);
+	int X = distrib(gen);
+	return X;
 }
