@@ -17,6 +17,7 @@ public:
 	Vector2 position;
 	void firelaser();
 	std::vector<Laser> lasers;
+	Rectangle getrect();
 
 private:
 	Texture2D image;

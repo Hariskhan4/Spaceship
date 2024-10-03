@@ -20,5 +20,8 @@ private:
 	int RandomX();
 	double LastAsteroidTime = 0;
 	void Explode();
+	void Crash();
+	void GameOver();
+	bool Over = false;
 	
 };

@@ -28,17 +28,22 @@ void Game::DrawGame()
 
 void Game::Update()
 {
-	for (auto& laser : spaceship.lasers)
+	if (Over==false)
 	{
-		laser.Update();
+		for (auto& laser : spaceship.lasers)
+		{
+			laser.Update();
+		}
+		DeleteInActiveLasers();
+		for (auto& asteroid : asteroids)
+		{
+			asteroid.Update();
+		}
+		DeleteInActiveAsteroids();
+		Explode();
+		Crash();
 	}
-	DeleteInActiveLasers();
-	for (auto& asteroid : asteroids)
-	{
-		asteroid.Update();
-	}
-	DeleteInActiveAsteroids();
-	Explode();
+	
 }
 
 void Game::PlayerInput()
@@ -118,4 +123,23 @@ void Game::Explode()
 			}
 		}
 	}
+}
+
+void Game::Crash()
+{
+	for (auto it= asteroids.begin();it!=asteroids.end();)
+	{
+		if (CheckCollisionRecs(it->getrect(), spaceship.getrect()))
+		{
+			GameOver();
+		}
+		else {
+			++it;
+		}
+	}
+}
+
+void Game::GameOver()
+{
+	Over = true;
 }
