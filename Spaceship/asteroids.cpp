@@ -1,32 +1,38 @@
 #include "asteroids.h"
-#include <random>
 
-Asteroids::Asteroids(int positionX,int positionY, int speed)
+
+Asteroids::Asteroids(int positionX, int positionY, int speed)
 {
-	asteroidimage = LoadTexture("Graphics/a30000.png");
-	this->positionX = positionX;
-	this->positionY = positionY;
-	this->speed = speed;
-	IsActive = true;
-	IsHit = false;
+    asteroidTexture.loadFromFile("Graphics/a30000.png");
+    asteroidSprite.setTexture(asteroidTexture);
+    this->positionX = positionX;
+    this->positionY = positionY;
+    this->speed = speed;
+    asteroidSprite.setPosition(positionX, positionY);
+    IsActive = true;
+    IsHit = false;
 }
 
-void Asteroids::DrawAsteroid()
+void Asteroids::DrawAsteroid(sf::RenderWindow& window)
 {
-	DrawTexture(asteroidimage,positionX,positionY, WHITE);
+    if (IsActive)
+    {
+        window.draw(asteroidSprite);
+    }
 }
 
 void Asteroids::Update()
 {
-	positionY += speed;
-	if (positionY > GetScreenHeight() - asteroidimage.height)
-	{
-		IsActive = false;
-	}
+    positionY += speed;
+    asteroidSprite.setPosition(positionX, positionY);
+
+    if (positionY > 700) 
+    {
+        IsActive = false;
+    }
 }
 
-Rectangle Asteroids::getrect()
+sf::FloatRect Asteroids::getRect()
 {
-	return {float(positionX),float(positionY),float(asteroidimage.width),float(asteroidimage.height)};
+    return asteroidSprite.getGlobalBounds();
 }
-

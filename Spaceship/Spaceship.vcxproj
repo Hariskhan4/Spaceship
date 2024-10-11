@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>"E:\vcpkg\packages\raylib_x64-windows\include"</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"E:\vcpkg\packages\raylib_x64-windows\include";"C:\Users\E590\Downloads\vcpkg\vcpkg\packages\sfml_x64-windows\include"</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>"E:\vcpkg\packages\raylib_x64-windows\lib"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>"E:\vcpkg\packages\raylib_x64-windows\lib";"C:\Users\E590\Downloads\vcpkg\vcpkg\packages\sfml_x64-windows\lib"</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

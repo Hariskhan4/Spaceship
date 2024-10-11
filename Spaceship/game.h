@@ -8,7 +8,7 @@ class Game
 public:
 	Game();
 	~Game();
-	void DrawGame();
+	void DrawGame(sf::RenderWindow& window);
 	void Update();
 	void PlayerInput();
 	std::vector<Asteroids> asteroids;

@@ -1,65 +1,75 @@
 #include "spaceship.h"
+#include <iostream>
+#include <chrono>
 
 Spaceship::Spaceship()
 {
-	image = LoadTexture("Graphics/Kla'ed - Battlecruiser - Base.png");
-	position.x = (GetScreenWidth()-image.width)/2;
-	position.y = GetScreenHeight()-image.height;
-	LastFireTime = 0.0;
+    texture.loadFromFile("Graphics/Kla'ed - Battlecruiser - Base.png");
+    sprite.setTexture(texture);
+    position.x = (750 - texture.getSize().x) / 2; 
+    position.y = 700 - texture.getSize().y; 
+    LastFireTime = 0.0;
 }
 
 Spaceship::~Spaceship()
 {
-	UnloadTexture(image);
+    
 }
 
-void Spaceship::DrawSpaceship()
+void Spaceship::DrawSpaceship(sf::RenderWindow& window)
 {
-	DrawTextureV(image, position, WHITE);
+    sprite.setPosition(position);
+    window.draw(sprite);
 }
 
 void Spaceship::Update()
 {
+    
 }
 
 void Spaceship::moveLeft()
 {
-	position.x -= 12;
-	if (position.x < 0)
-		position.x = 0;
+    position.x -= 12;
+    if (position.x < 0)
+        position.x = 0;
 }
 
 void Spaceship::moveRight()
 {
-	position.x += 12;
-	if (position.x > GetScreenWidth()-image.width)
-		position.x = GetScreenWidth() - image.width;
+    position.x += 12;
+    if (position.x > 750 - texture.getSize().x) 
+        position.x = 750 - texture.getSize().x;
 }
 
 void Spaceship::moveUp()
 {
-	position.y -= 12;
-	if (position.y < 0)
-		position.y = 0;
+    position.y -= 12;
+    if (position.y < 0)
+        position.y = 0;
 }
 
 void Spaceship::moveDown()
 {
-	position.y += 12;
-	if (position.y > GetScreenHeight() - image.height)
-		position.y = GetScreenHeight() - image.height;
+    position.y += 12;
+    if (position.y > 700 - texture.getSize().y) 
+        position.y = 700 - texture.getSize().y;
 }
 
-void Spaceship::firelaser()
+void Spaceship::fireLaser()
 {
-	if (GetTime() - LastFireTime >= 0.35) {
-		lasers.push_back(Laser({ (position.x + image.width / 2) - 35,position.y }, 7));
-		LastFireTime = GetTime();
-	}
-	
+    if (getElapsedTime()-LastFireTime >= 0.35) {
+        lasers.push_back(Laser({ position.x + texture.getSize().x / 2 - 35, position.y }, 7));
+        LastFireTime = getElapsedTime();
+    }
 }
 
-Rectangle Spaceship::getrect()
+sf::FloatRect Spaceship::getRect()
 {
-	return {position.x,position.y,float(image.width),float(image.height)};
+    return sprite.getGlobalBounds();
+}
+
+double Spaceship::getElapsedTime()
+{
+    
+    return std::chrono::duration<double>(std::chrono::system_clock::now().time_since_epoch()).count();
 }

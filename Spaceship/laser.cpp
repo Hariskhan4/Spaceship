@@ -1,30 +1,36 @@
 #include "laser.h"
 
-Laser::Laser(Vector2 position, int speed)
+Laser::Laser(sf::Vector2f position, int speed)
 {
-	laserimage = LoadTexture("Graphics/Kla'ed - Ray.png");
-	this->position = position;
-	this->speed = speed;
-	laseractive = true;
+    laserTexture.loadFromFile("Graphics/Kla'ed - Ray.png");
+    laserSprite.setTexture(laserTexture);
+    this->position = position;
+    this->speed = speed;
+    laserSprite.setPosition(position);
+    laserActive = true;
 }
 
-void Laser::DrawLaser()
+void Laser::DrawLaser(sf::RenderWindow& window)
 {
-	if(laseractive)
-	DrawTextureV(laserimage, position, WHITE);
+    if (laserActive)
+    {
+        window.draw(laserSprite);
+    }
+    
 }
 
 void Laser::Update()
 {
-	position.y -= speed;
-	if (position.y < 0)
-	{
-		laseractive = false;
-		
-	}
+    position.y -= speed;
+    laserSprite.setPosition(position);
+
+    if (position.y < 0)
+    {
+        laserActive = false;
+    }
 }
 
-Rectangle Laser::getrect()
+sf::FloatRect Laser::getRect()
 {
-	return {position.x,position.y,float(laserimage.width),float(laserimage.height)};
+    return laserSprite.getGlobalBounds();
 }

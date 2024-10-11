@@ -1,21 +1,21 @@
 #pragma once
-#include <raylib.h>
+#include <SFML/Graphics.hpp>
 #include <vector>
 
 class Asteroids
 {
 public:
-	Asteroids(int positionX,int positionY,int speed);
-	void DrawAsteroid();
-	void Update();
-	bool IsHit;
-	bool IsActive;
-	int positionX;
-	int positionY;
-	Rectangle getrect();
+    Asteroids(int positionX, int positionY, int speed);
+    void DrawAsteroid(sf::RenderWindow& window);
+    void Update();
+    bool IsHit;
+    bool IsActive;
+    int positionX;
+    int positionY;
+    sf::FloatRect getRect();
 
 private:
-	
-	int speed;
-	Texture2D asteroidimage;
+    int speed;
+    sf::Texture asteroidTexture;
+    sf::Sprite asteroidSprite;
 };

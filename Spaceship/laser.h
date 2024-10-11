@@ -1,18 +1,18 @@
 #pragma once
-#include <raylib.h>
+#include <SFML/Graphics.hpp>
 
 class Laser
 {
 public:
-	Laser(Vector2 position,int speed );
-	void DrawLaser();
-	void Update();
-	bool laseractive;
-	Texture2D laserimage;
-	Vector2 position;
-	Rectangle getrect();
-private:
-	
-	int speed;
+    Laser(sf::Vector2f position, int speed);
+    void DrawLaser(sf::RenderWindow& window);
+    void Update();
+    bool laserActive;
+    sf::Texture laserTexture;
+    sf::Sprite laserSprite;
+    sf::Vector2f position;
+    sf::FloatRect getRect();
 
+private:
+    int speed;
 };
